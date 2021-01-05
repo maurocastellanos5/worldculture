@@ -169,8 +169,8 @@ alter table Envios add constraint Envios_Paqueteria_FK foreign key (IdPaqueteria
 alter table Tarjetas add constraint Tarjetas_Clientes_FK foreign key (IdCliente)
       references Clientes (IdCliente);
       
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'hola.123';
-GRANT ALL PRIVILEGES ON Worldculture.Usuarios TO 'admin'@'localhost';
+CREATE USER 'admin1'@'localhost' IDENTIFIED BY 'hola.123';
+GRANT ALL PRIVILEGES ON Worldculture.Usuarios TO 'admin1'@'localhost';
 
 insert into Usuarios(IdUsuario,Nombre,Telefono,Email,Contrasenia,Sexo,Tipo) 
 values(1,"Mauro castellanos Diaz","3931041660","administrador@gmail.com","Hola","H","A");

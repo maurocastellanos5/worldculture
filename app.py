@@ -5,7 +5,7 @@ from modelo.models import db, Usuario
 
 app = Flask(__name__)
 app.secret_key = 'W0rldCultur3'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:hola.123@localhost/WorldCulture'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin1:hola.123@localhost/WorldCulture'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Configuración para el manejo de la sesion de los usuarios
