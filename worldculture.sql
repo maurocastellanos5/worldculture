@@ -104,9 +104,9 @@ create table Pedidos
 /*==============================================================*/
 create table Ventas
 (
-   IdVentas      		int auto_increment not null,
-   IdPedido             int auto_increment not null,
-   idEnvio              int auto_increment not null,
+   IdVentas      		int  not null,
+   IdPedido             int  not null,
+   idEnvio              int  not null,
    Fecha                date not null,
    constraint pk_IdVentas primary key (IdVentas)
 );
@@ -152,7 +152,7 @@ alter table Pedidos add constraint Pedidos_Cliente_FK foreign key (IdCliente)
       references Clientes (IdCliente);
 
 alter table Pedidos add constraint Pedidos_Productos_FK foreign key (IdProducto)
-      references Productos (IdProductos);
+      references Productos (IdProducto);
 
 alter table Direcciones add constraint Direcciones_Clientes_FK foreign key (IdCliente)
       references Clientes (IdCliente);
@@ -164,7 +164,7 @@ alter table Ventas add constraint Ventas_Envios_FK foreign key (IdEnvio)
       references Envios (IdEnvios);
       
 alter table Envios add constraint Envios_Paqueteria_FK foreign key (IdPaqueteria)
-      references Paqueteria (IdMaestro);
+      references Paqueteria (IdPaqueteria);
       
 alter table Tarjetas add constraint Tarjetas_Clientes_FK foreign key (IdCliente)
       references Clientes (IdCliente);
@@ -176,5 +176,3 @@ insert into Usuarios(IdUsuario,Nombre,Telefono,Email,Contrasenia,Sexo,Tipo)
 values(1,"Mauro castellanos Diaz","3931041660","administrador@gmail.com","Hola","H","A");
 insert into Usuarios(IdUsuario,Nombre,Telefono,Email,Contrasenia,Sexo,Tipo) 
 values(2,"Guillermo Godinez","3931041660","cliente@gmail.com","Hola","H","C");
-
-	 
