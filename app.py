@@ -24,7 +24,7 @@ def inicio():
     if current_user.is_authenticated and current_user.Tipo=="A":
         return render_template('PanelAdministracion.html')
     else:
-        return render_template('index.html')
+        return render_template('login.html')
 
 @app.route('/login',methods=['POST'])
 def login():
