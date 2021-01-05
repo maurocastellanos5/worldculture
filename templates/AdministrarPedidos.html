@@ -72,7 +72,7 @@
             <tbody>
                 {% for Pedido in Pedidos %}
                 <tr>
-                    <td>{{ Pedido.0 }}</td>
+                    <td>{{ Pedido.IdPedido }}</td>
                     <td>{{ Pedido.1 }}</td>
                     <td>{{ Pedido.2 }}</td>
                     <td>{{ Pedido.3 }}</td>
@@ -81,7 +81,7 @@
                     <td>{{ Pedido.6 }}</td>
                     <td>{{ Pedido.7 }}</td>
                     <td>
-                        <a href="/EditPedidos/{{Pedido.0}}" class="btn btn-warning btn-block">Editar</a>
+                        <a href="/EditPedidos/{{Pedido.IdPedido}}" class="btn btn-warning btn-block">Editar</a>
                         <a href="/DeletePedidos/{{Pedido.0}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
                     </td>
                 </tr>

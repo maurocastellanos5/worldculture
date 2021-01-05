@@ -8,7 +8,7 @@ db = SQLAlchemy()
 class Usuario(UserMixin, db.Model):
     __tablename__ = 'Usuarios'
     IdUsuario = Column(Integer, primary_key=True)
-    NombreCompleto = Column(String, nullable=False)
+    Nombre = Column(String, nullable=False)
     Telefono = Column(String, nullable=False)
     Email = Column(String, nullable=False)
     Contrasenia = Column(String, nullable=False)
@@ -51,5 +51,3 @@ class Usuario(UserMixin, db.Model):
                 return user
         else:
             return None
-
-

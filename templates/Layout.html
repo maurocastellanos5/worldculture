@@ -86,9 +86,17 @@
                     <li>
                         <a href="#">Carrito</a>
                     </li>
+                    {% if current_user.is_authenticated %}
                     <li class="move-right btn">
-                        <a href="#">Iniciar Sesion</a>
+                        <a href="/cerrarSesion">Cerrar Sesion</a>
                     </li>
+                    {% endif %}
+
+                    {% if current_user.is_anonymous==True %}
+                    <li class="move-right btn">
+                        <a href="/iniciar">Iniciar Sesion</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
