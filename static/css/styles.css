@@ -215,3 +215,7 @@ li.move-right {
         display: flex;
     }
 }
+
+.row {
+    padding-top: 15px;
+}

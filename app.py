@@ -106,7 +106,7 @@ def CalzadoNino():
 def CalzadoNina():
     return render_template('/Calzado/CalzadoNina.html')
 
-#Fin Rutas Departamento Calzado
+#Fin Rutas Departamento
 
 if __name__ == '__main__':
     db.init_app(app)

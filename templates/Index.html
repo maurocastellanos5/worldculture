@@ -1,1 +1,23 @@
-{% extends 'Layout.html' %} {% block body %} {% endblock %}
+{% extends 'Layout.html' %} {% block body %}
+
+<div class="row align-items-center">
+    <div class="col-12">
+        <center>
+            <!--Bienvenida-->
+            <h1 class="text-capitalize">
+                <span class="text-warning h2">Bienvenido  </span> <br/> WorldCulture
+            </h1>
+        </center>
+    </div>
+</div>
+
+<div class="row  align-items-center">
+    <div class="col-12">
+        <img id="admin" src="{{ url_for('static', filename='img/worldculturee.png') }}" alt="admin">
+    </div>
+
+</div>
+
+
+
+{% endblock %}

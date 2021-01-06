@@ -151,7 +151,7 @@ class Tarjeta(db.Model):
     def consultaIndividual(self):
         tar = self.query.get(self.IdTarjeta)
         return tar
-
+###
 class Producto(db.Model):
     __tablename__   = 'Productos'
     IdProducto    = Column(Integer, primary_key=True)
@@ -161,8 +161,8 @@ class Producto(db.Model):
     Departamento  = Column(String, nullable=False)
     Seccion       = Column(String, nullable=False)
     Stock         = Column(Integer, nullable=False)
-    PrecioVenta   = Column(Float, nullable=False)
-    PrecioCompra  = Column(Float, nullable=False)
+    #PrecioVenta   = Column(Float, nullable=False)
+    #PrecioCompra  = Column(Float, nullable=False)
 
     def insertar(self):
         db.session.add(self)
