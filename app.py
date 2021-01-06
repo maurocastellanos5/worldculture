@@ -38,7 +38,7 @@ def login():
         login_user(u)
         return redirect(url_for('inicio'))
     else:
-        return 'Datos No Válidos'
+        return 'Datos incorrectos'
 
 @app.route('/cerrarSesion')
 @login_required
@@ -51,6 +51,62 @@ def cerrarSesion():
 
 #Fin de Configuración para el manejo de la sesion
 
+
+#Inicio Rutas Departamento Ropa
+@app.route('/RopaDama')
+def RopaDama():
+    return render_template('/Ropa/RopaDama.html')
+
+@app.route('/RopaCaballero')
+def RopaCaballero():
+    return render_template('/Ropa/RopaCaballero.html')
+
+@app.route('/RopaNino')
+def RopaNino():
+    return render_template('/Ropa/RopaNino.html')
+
+@app.route('/RopaNina')
+def RopaNina():
+    return render_template('/Ropa/RopaNina.html')
+#Fin Rutas Departamento Ropa
+
+
+#Inicio Rutas Departamento Accesorios
+@app.route('/AccesoriosDama')
+def AccesoriosDama():
+    return render_template('/Accesorios/AccesoriosDama.html')
+
+@app.route('/AccesoriosCaballero')
+def AccesoriosCaballero():
+    return render_template('/Accesorios/AccesoriosCaballero.html')
+
+@app.route('/AccesoriosNino')
+def AccesoriosNino():
+    return render_template('/Accesorios/AccesoriosNino.html')
+
+@app.route('/AccesoriosNina')
+def AccesoriosNina():
+    return render_template('/Accesorios/AccesoriosNina.html')
+#Fin Rutas Departamento Ropa
+
+#Inicio Rutas Departamento Calzado
+@app.route('/CalzadoDama')
+def CalzadoDama():
+    return render_template('/Calzado/CalzadoDama.html')
+
+@app.route('/CalzadoCaballero')
+def CalzadoCaballero():
+    return render_template('/Calzado/CalzadoCaballero.html')
+
+@app.route('/CalzadoNino')
+def CalzadoNino():
+    return render_template('/Calzado/CalzadoNino.html')
+
+@app.route('/CalzadoNina')
+def CalzadoNina():
+    return render_template('/Calzado/CalzadoNina.html')
+
+#Fin Rutas Departamento Calzado
 
 if __name__ == '__main__':
     db.init_app(app)

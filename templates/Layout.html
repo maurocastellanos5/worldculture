@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Administración</title>
+    <title>WorldCulture</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/PanelAdministracion.css') }}">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
@@ -22,27 +21,25 @@
                     <i class="icon ion-md-menu"></i>
                     <i class="icon ion-md-close"></i>
                 </div>
-                <a href="Index.html" class="logo">
-                    <i class="icon ion-md-american-football"></i>
-                </a>
+
                 <ul class="nav-list">
                     <li>
-                        <a href="#">Inicio</a>
+                        <a href="/">Inicio</a>
                     </li>
                     <li>
                         <a href="#">Ropa</a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="#">Dama</a>
+                                <a href="/RopaDama">Dama</a>
                             </li>
                             <li>
-                                <a href="#">Caballero</a>
+                                <a href="/RopaCaballero">Caballero</a>
                             </li>
                             <li>
-                                <a href="#">Nino</a>
+                                <a href="/RopaNino">Niño</a>
                             </li>
                             <li>
-                                <a href="#">Nina</a>
+                                <a href="/RopaNina">Niña</a>
                             </li>
                         </ul>
                     </li>
@@ -50,16 +47,16 @@
                         <a href="#">Calzado</a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="#">Dama</a>
+                                <a href="/CalzadoDama">Dama</a>
                             </li>
                             <li>
-                                <a href="#">Caballero</a>
+                                <a href="/CalzadoCaballero">Caballero</a>
                             </li>
                             <li>
-                                <a href="#">Nino</a>
+                                <a href="/CalzadoNino">Niño</a>
                             </li>
                             <li>
-                                <a href="#">Nina</a>
+                                <a href="/CalzadoNina">Niña</a>
                             </li>
                         </ul>
                     </li>
@@ -67,16 +64,16 @@
                         <a href="#">Accesorios</a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="#">Dama</a>
+                                <a href="/AccesoriosDama">Dama</a>
                             </li>
                             <li>
-                                <a href="#">Caballero</a>
+                                <a href="/AccesoriosCaballero">Caballero</a>
                             </li>
                             <li>
-                                <a href="#">Nino</a>
+                                <a href="/AccesoriosNino">Niño</a>
                             </li>
                             <li>
-                                <a href="#">Nina</a>
+                                <a href="/AccesoriosNina">Niña</a>
                             </li>
                         </ul>
                     </li>
@@ -86,13 +83,14 @@
                     <li>
                         <a href="#">Carrito</a>
                     </li>
+                    <li class="move-right">
+                        <a href="#">Bienvenido:</a>
+                    </li>
                     {% if current_user.is_authenticated %}
                     <li class="move-right btn">
                         <a href="/cerrarSesion">Cerrar Sesion</a>
                     </li>
-                    {% endif %}
-
-                    {% if current_user.is_anonymous==True %}
+                    {% endif %} {% if current_user.is_anonymous==True %}
                     <li class="move-right btn">
                         <a href="/iniciar">Iniciar Sesion</a>
                     </li>
@@ -105,6 +103,31 @@
     <div class="container pt-4">
         {% block body %} {% endblock %}
     </div>
+
+
+    <!--Inicio Footer-->
+    <footer class="bg-dark text-white">
+        <div class="container">
+            <nav class="row">
+                <!--Logo-->
+                <a href="#" class="col-3 text-reset text-uppercase d-flex align-items-center">
+                    <i class="icon ion-ios-american-football">hOLA</i>
+                </a>
+                <!--Menu-->
+                <ul class="col-3 list-unstyled">
+                    <li>
+
+                    </li>
+                </ul>
+                <!--Redes-->
+
+                <!--Mapas-->
+            </nav>
+        </div>
+
+    </footer>
+
+    <!--Fin Footer-->
 
 
     <!-- scripts -->
