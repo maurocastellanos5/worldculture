@@ -25,11 +25,24 @@
                     <td>Stock</td>
                     <td>PrecioVenta</td>
                     <td>PrecioCompra</td>
-                    <td>Opciones</td>
                 </tr>
             </thead>
             <tbody>
+                {%for calzado in Productos%}
+                {%if calzado.Departamento=="Calzado" and calzado.Seccion=="Dama"%}
+                <tr>
+                    <td>{{calzado.CodigoBarras}}       </td>
+                    <td>{{calzado.Nombre}}       </td>
+                    <td>{{calzado.Descripcion}}  </td>
+                    <td>{{calzado.Departamento}} </td>
+                    <td>{{calzado.Seccion }}     </td>
+                    <td>{{calzado.Stock}}        </td>
+                    <td>{{calzado.PrecioVenta}}  </td>
+                    <td>{{calzado.PrecioCompra}} </td>
+                </tr>
+                {%endif%}
 
+                {%endfor%}
             </tbody>
         </table>
     </div>

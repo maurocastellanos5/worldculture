@@ -55,56 +55,80 @@ def cerrarSesion():
 #Inicio Rutas Departamento Ropa
 @app.route('/RopaDama')
 def RopaDama():
-    return render_template('/Ropa/RopaDama.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Ropa/RopaDama.html', Productos=p)
 
 @app.route('/RopaCaballero')
 def RopaCaballero():
-    return render_template('/Ropa/RopaCaballero.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Ropa/RopaCaballero.html', Productos=p)
 
 @app.route('/RopaNino')
 def RopaNino():
-    return render_template('/Ropa/RopaNino.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Ropa/RopaNino.html', Productos=p)
 
 @app.route('/RopaNina')
 def RopaNina():
-    return render_template('/Ropa/RopaNina.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Ropa/RopaNina.html', Productos=p)
 #Fin Rutas Departamento Ropa
 
 
 #Inicio Rutas Departamento Accesorios
 @app.route('/AccesoriosDama')
 def AccesoriosDama():
-    return render_template('/Accesorios/AccesoriosDama.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Accesorios/AccesoriosDama.html', Productos=p)
 
 @app.route('/AccesoriosCaballero')
 def AccesoriosCaballero():
-    return render_template('/Accesorios/AccesoriosCaballero.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Accesorios/AccesoriosCaballero.html', Productos=p)
 
 @app.route('/AccesoriosNino')
 def AccesoriosNino():
-    return render_template('/Accesorios/AccesoriosNino.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Accesorios/AccesoriosNino.html', Productos=p)
 
 @app.route('/AccesoriosNina')
 def AccesoriosNina():
-    return render_template('/Accesorios/AccesoriosNina.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Accesorios/AccesoriosNina.html', Productos=p)
 #Fin Rutas Departamento Ropa
 
 #Inicio Rutas Departamento Calzado
 @app.route('/CalzadoDama')
 def CalzadoDama():
-    return render_template('/Calzado/CalzadoDama.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Calzado/CalzadoDama.html', Productos=p)
 
 @app.route('/CalzadoCaballero')
 def CalzadoCaballero():
-    return render_template('/Calzado/CalzadoCaballero.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Calzado/CalzadoCaballero.html', Productos=p)
 
 @app.route('/CalzadoNino')
 def CalzadoNino():
-    return render_template('/Calzado/CalzadoNino.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Calzado/CalzadoNino.html', Productos=p)
 
 @app.route('/CalzadoNina')
 def CalzadoNina():
-    return render_template('/Calzado/CalzadoNina.html')
+    p= Producto()
+    p=p.consultaGeneral()
+    return render_template('/Calzado/CalzadoNina.html', Productos=p)
 
 #Fin Rutas Departamento Calzado
 

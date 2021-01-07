@@ -15,7 +15,8 @@ create table Productos
    Stock              int not null,
    PrecioVenta        float not null,
    PrecioCompra       float not null,
-   constraint pk_IdProdcuto primary key (IdProducto)
+   constraint pk_IdProdcuto primary key (IdProducto),
+   constraint chk_precios check (PrecioVenta>PrecioCompra)
 );
 
 /*==============================================================*/
