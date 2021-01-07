@@ -118,7 +118,7 @@ nav {
     display: block;
     position: absolute;
     border-top: 3px solid lightseagreen;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, .8);
     z-index: 100;
     top: 16rem;
     opacity: 0;
@@ -216,10 +216,48 @@ li.move-right {
     }
 }
 
-.row {
-    padding-top: 15px;
+.rowdes {
+    margin-top: 175px;
 }
 
 .roww {
-    padding-top: 100px;
+    margin-top: 90px;
+}
+
+.header {
+    background-image: url(../img/fondo.jpg);
+    background-position: center;
+    background-size: cover;
+    margin-top: 70px;
+}
+
+.footer {
+    margin-top: 800px;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.vh-40 {
+    height: 40vmin;
+}
+
+.PDescripcion {
+    font-size: 25px;
+}
+
+.back {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.titulo {
+    font-size: 30px;
 }

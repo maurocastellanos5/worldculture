@@ -106,7 +106,26 @@ def CalzadoNino():
 def CalzadoNina():
     return render_template('/Calzado/CalzadoNina.html')
 
-#Fin Rutas Departamento
+#Fin Rutas Departamento Calzado
+
+
+#Inicio Ruta Contacto
+@app.route('/Contacto')
+def Contacto():
+    return render_template('/Contacto/Contacto.html')
+#Fin Ruta Contacto
+
+#Inicio Ruta Carrtio
+@app.route('/Carrito')
+def Carrito():
+    return render_template('/Carrito/Carrito.html')
+#Fin Ruta Carrito
+
+#Inicio Ruta mis Pedidos
+@app.route('/MisPedidos')
+def MisPedidos():
+    return render_template('/Pedidos/MisPedidos.html')
+#Fin Ruta mis Pedidos
 
 if __name__ == '__main__':
     db.init_app(app)

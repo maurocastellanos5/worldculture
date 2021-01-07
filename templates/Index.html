@@ -1,22 +1,44 @@
 {% extends 'Layout.html' %} {% block body %}
 
-<div class="row align-items-center">
-    <div class="col-12">
-        <center>
-            <!--Bienvenida-->
-            <h1 class="text-capitalize">
-                <span class="text-warning h2">Bienvenido  </span> <br/> WorldCulture
-            </h1>
-        </center>
-    </div>
-</div>
 
-<div class="row  align-items-center">
-    <div class="col-12">
-        <img id="admin" src="{{ url_for('static', filename='img/worldculturee.png') }}" alt="admin">
-    </div>
+<header class="header">
+    <div class="container  vh-40">
+        <!--Descripcion-->
+        <div class="row rowdes">
 
-</div>
+            <div class="col-md-12 text-white back">
+                <!--Titulo-->
+                <center>
+                    <h1 class="text-capitalize"> <span class="text-warning titulo">Bienvenido a WorldCulture</span>
+                    </h1>
+                </center>
+
+            </div>
+
+            <div class="col-md-6 text-white back">
+
+                <center>
+                    <br>
+                    </br>
+                    <br>
+                    </br>
+                    <p class="PDescripcion">Somos una compañía Mexicana dedicada al comercio electrónico y físico de moda para toda ocasión fundada el 5 de Diciembre de 2020 por Mauro Yeudiel Castellanos Díaz</p>
+                </center>
+
+            </div>
+            <div class="col-md-6 text-white back">
+                <center>
+                    <img height="70%" width="50%" src="../static/img/worldculturee.png" alt="">
+                </center>
+            </div>
+
+
+
+        </div>
+    </div>
+    <img src="../static/img/cuts/cut-header.svg" alt="" />
+
+</header>
 
 
 
