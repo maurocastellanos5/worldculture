@@ -178,6 +178,7 @@ GRANT ALL PRIVILEGES ON Worldculture.Tarjetas TO 'admin1'@'localhost';
 GRANT ALL PRIVILEGES ON Worldculture.Paqueteria TO 'admin1'@'localhost';
 GRANT ALL PRIVILEGES ON Worldculture.Envios TO 'admin1'@'localhost';
 GRANT ALL PRIVILEGES ON Worldculture.Paqueteria TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Ventas TO 'admin1'@'localhost';
 
 select * from Productos;
 select * from Usuarios;
@@ -187,6 +188,8 @@ select * from Administradores;
 select * from Direcciones;
 select * from Tarjetas;
 select * from Paqueteria;
+select * from Envios;
+select * from Ventas;
 
 
 insert into Usuarios(IdUsuario,Nombre,Telefono,Email,Contrasenia,Sexo,Tipo) 
