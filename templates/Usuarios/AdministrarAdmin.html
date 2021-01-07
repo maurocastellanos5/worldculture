@@ -14,18 +14,29 @@
         {% endfor %} {% endif %} {% endwith %}
 
         <div class="card card-body">
-            <form action="/AddAdministradores" method="POST">
+            <form action="/AddUsuarios" method="POST">
 
                 <div class="form-group">
-                    <input type="text" name="Nombre" placeholder="Nombre" class="form-control">
+                    <input type="text" name="Nombre" placeholder="Nombre" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="Usuario" placeholder="Usuario" class="form-control">
+                    <input type="text" name="Telefono" placeholder="Telefono" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" name="Password" placeholder="Password" class="form-control">
+                    <input type="email" name="Email" placeholder="Email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="Password" placeholder="Password" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" maxlength="1" name="Tipo" placeholder="Tipo" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" maxlength="1" name="Sexo" placeholder="Sexo" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -43,18 +54,26 @@
             <thead>
                 <tr>
                     <td>Nombre</td>
-                    <td>Usuario</td>
+                    <td>Telefono</td>
+                    <td>Email</td>
+                    <td>Contraseña</td>
+                    <td>Tipo</td>
+                    <td>Sexo</td>
                     <td>Opciones</td>
                 </tr>
             </thead>
             <tbody>
-                {% for Administrador in Administradores %}
+                {% for usuario in Usuarios %}
                 <tr>
-                    <td>{{ Administrador.1 }}</td>
-                    <td>{{ Administrador.2 }}</td>
+                    <td>{{usuario.Nombre}}     </td>
+                    <td>{{usuario.Telefono}}   </td>
+                    <td>{{usuario.Email}}      </td>
+                    <td>{{usuario.Contrasenia}} </td>
+                    <td>{{usuario.Tipo}}       </td>
+                    <td>{{usuario.Sexo}}       </td>
                     <td>
-                        <a href="/EditAdministradores/{{Administrador.0}}" class="btn btn-warning btn-block">Editar</a>
-                        <a href="/DeleteAdministradores/{{Administrador.0}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
+                        <a href="/EditUsuarios/{{usuario.IdUsuario}}" class="btn btn-warning btn-block">Editar</a>
+                        <a href="/DeleteUsuario/{{usuario.IdUsuario}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}

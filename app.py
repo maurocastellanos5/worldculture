@@ -1,7 +1,7 @@
 from flask import Flask, render_template, abort, request, redirect, url_for
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 from flask_sqlalchemy import SQLAlchemy
-from modelo.models import db, Usuario
+from modelo.models import db, Usuario, Producto
 
 app = Flask(__name__)
 app.secret_key = 'W0rldCultur3'
@@ -108,6 +108,104 @@ def CalzadoNina():
 
 #Fin Rutas Departamento Calzado
 
+#Inicio Crud Productos
+@app.route('/Productos')
+def consultaProductos():
+    p = Producto()
+    p=p.consultaGeneral()
+    return render_template('/Productos/AdministrarProductos.html',Productos=p)
+
+@app.route('/AddProductos',methods=['POST'])
+def guardarProducto():
+    p = Producto()
+    p.CodigoBarras = request.form['Codigo']
+    p.Nombre = request.form['Nombre']
+    p.Descripcion = request.form['Descripcion']
+    p.Departamento = request.form['Departamento']
+    p.Seccion = request.form['Seccion']
+    p.Stock = request.form['Stock']
+    p.PrecioVenta = request.form['PrecioVenta']
+    p.PrecioCompra = request.form['PrecioCompra']
+    p.insertar()
+    return redirect(url_for('consultaProductos'))
+
+@app.route('/EditProductos/<int:id>')
+def consultarProducto(id):
+    p = Producto()
+    p.IdProducto = id
+    p = p.consultaIndividual()
+    return render_template('Productos/EditProductos.html', Producto=p)
+
+@app.route('/Productos/modificar', methods=['POST'])
+def actualizarProducto():
+    p = Producto()
+    p.IdProducto = request.form['IdProducto']
+    p.CodigoBarras = request.form['Codigo']
+    p.Nombre = request.form['Nombre']
+    p.Descripcion = request.form['Descripcion']
+    p.Departamento = request.form['Departamento']
+    p.Seccion = request.form['Seccion']
+    p.Stock = request.form['Stock']
+    p.PrecioVenta = request.form['PrecioVenta']
+    p.PrecioCompra = request.form['PrecioCompra']
+    p.actualizar()
+    return redirect(url_for('consultaProductos'))
+
+@app.route('/DeleteProductos/<int:id>')
+def eliminarProducto(id):
+    p = Producto()
+    p.IdProducto = id
+    p.eliminar()
+    return redirect(url_for('consultaProductos'))        
+#Fin Crud Productos
+
+#Inicio Crud Usuarios
+@app.route('/Usuarios')
+def consultaUsuarios():
+    u = Usuario()
+    u=u.consultaGeneral()
+    return render_template('/Usuarios/AdministrarAdmin.html',Usuarios=u)
+
+@app.route('/AddUsuarios',methods=['POST'])
+def guardarUsuarios():
+    u = Usuario()
+    u.Nombre = request.form['Nombre']
+    u.Telefono = request.form['Telefono']
+    u.Email = request.form['Email']
+    u.Contrasenia = request.form['Password']
+    u.Sexo = request.form['Sexo']
+    u.Tipo = request.form['Tipo']
+    u.insertar()
+    return redirect(url_for('consultaUsuarios'))
+
+@app.route('/EditUsuarios/<int:id>')
+def consultarUsuario(id):
+    u = Usuario()
+    u.IdUsuario = id
+    u = u.consultaIndividual()
+    return render_template('Usuarios/EditAdministradores.html', Usuario=u)
+
+@app.route('/Usuarios/modificar', methods=['POST'])
+def actualizarUsuario():
+    u = Usuario()
+    u.IdUsuario = request.form['IdUsuario']
+    u.Nombre = request.form['Nombre']
+    u.Telefono = request.form['Telefono']
+    u.Email = request.form['Email']
+    u.Contrasenia = request.form['Password']
+    u.Sexo = request.form['Sexo']
+    u.Tipo = request.form['Tipo']
+    u.actualizar()
+    return redirect(url_for('consultaUsuarios'))
+
+@app.route('/DeleteUsuario/<int:id>')
+def eliminarUsuario(id):
+    u = Usuario()
+    u.IdUsuario = id
+    u.eliminar()
+    return redirect(url_for('consultaUsuarios'))
+        
+#Fin Crud Usuarios
 
 #Inicio Ruta Contacto
 @app.route('/Contacto')

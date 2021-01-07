@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, ForeignKey, Date, Time
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Time, Float
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 
@@ -51,7 +51,6 @@ class Usuario(UserMixin, db.Model):
                 return user
         else:
             return None
-
 
 class Cliente(db.Model):
     __tablename__ = 'Clientes'
@@ -161,8 +160,8 @@ class Producto(db.Model):
     Departamento  = Column(String, nullable=False)
     Seccion       = Column(String, nullable=False)
     Stock         = Column(Integer, nullable=False)
-    #PrecioVenta   = Column(Float, nullable=False)
-    #PrecioCompra  = Column(Float, nullable=False)
+    PrecioVenta   = Column(Float, nullable=False)
+    PrecioCompra  = Column(Float, nullable=False)
 
     def insertar(self):
         db.session.add(self)
@@ -253,7 +252,6 @@ class Envio(db.Model):
     def consultaIndividual(self):
         env = self.query.get(self.IdEnvios)
         return env
-
 
 class Paqueterias(db.Model):
     __tablename__   = 'Paqueteria'

@@ -12,40 +12,39 @@
             </button>
         </div>
         {% endfor %} {% endif %} {% endwith %}
-
         <div class="card card-body">
             <form action="/AddProductos" method="POST">
 
                 <div class="form-group">
-                    <input type="text" name="Codigo" placeholder="Codigo" class="form-control">
+                    <input type="number" name="Codigo" placeholder="Codigo" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="Nombre" placeholder="Nombre" class="form-control">
+                    <input type="text" name="Nombre" placeholder="Nombre" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="Descripcion" placeholder="Descripcion" class="form-control">
+                    <input type="text" name="Descripcion" placeholder="Descripcion" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="Departamento" placeholder="Departamento" class="form-control">
+                    <input type="text" name="Departamento" placeholder="Departamento" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="Seccion" placeholder="Seccion" class="form-control">
+                    <input type="text" name="Seccion" placeholder="Seccion" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="Stock" placeholder="Stock" class="form-control">
+                    <input type="number" name="Stock" placeholder="Stock" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="PrecioVenta" placeholder="PrecioVenta" class="form-control">
+                    <input type="number" name="PrecioVenta" placeholder="PrecioVenta" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="PrecioCompra" placeholder="PrecioCompra" class="form-control">
+                    <input type="number" name="PrecioCompra" placeholder="PrecioCompra" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -74,19 +73,19 @@
                 </tr>
             </thead>
             <tbody>
-                {% for producto in productos %}
+                {% for producto in Productos %}
                 <tr>
-                    <td>{{ producto.1 }}</td>
-                    <td>{{ producto.2 }}</td>
-                    <td>{{ producto.3 }}</td>
-                    <td>{{ producto.4 }}</td>
-                    <td>{{ producto.5 }}</td>
-                    <td>{{ producto.6 }}</td>
-                    <td>{{ producto.7 }}</td>
-                    <td>{{ producto.8 }}</td>
+                    <td>{{ producto.CodigoBarras }}</td>
+                    <td>{{ producto.Nombre }}</td>
+                    <td>{{ producto.Descripcion }}</td>
+                    <td>{{ producto.Departamento }}</td>
+                    <td>{{ producto.Seccion }}</td>
+                    <td>{{ producto.Stock }}</td>
+                    <td>{{ producto.PrecioVenta }}</td>
+                    <td>{{ producto.PrecioCompra }}</td>
                     <td>
-                        <a href="/EditProductos/{{producto.0}}" class="btn btn-warning btn-block">Editar</a>
-                        <a href="/DeleteProductos/{{producto.0}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
+                        <a href="/EditProductos/{{producto.IdProducto}}" class="btn btn-warning btn-block">Editar</a>
+                        <a href="/DeleteProductos/{{producto.IdProducto}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -2,6 +2,23 @@ create  database Worldculture;
 use Worldculture;
 
 /*==============================================================*/
+/* Table: Productos                                             */
+/*==============================================================*/
+create table Productos
+(
+   IdProducto         int auto_increment not null,
+   CodigoBarras       int not null,
+   Nombre             varchar(50) not null,
+   Descripcion        varchar(900) not null,
+   Departamento       varchar(10) not null,
+   Seccion            varchar(9) not null,
+   Stock              int not null,
+   PrecioVenta        float not null,
+   PrecioCompra       float not null,
+   constraint pk_IdProdcuto primary key (IdProducto)
+);
+
+/*==============================================================*/
 /* Table: Usuarios                                                 */
 /*==============================================================*/
 create table Usuarios
@@ -69,22 +86,7 @@ create table Tarjetas
    constraint pk_IdTarjeta primary key (IdTarjeta)
 );
 
-/*==============================================================*/
-/* Table: Productos                                             */
-/*==============================================================*/
-create table Productos
-(
-   IdProducto         int auto_increment not null,
-   CodigoBarras       int not null,
-   Nombre             varchar(50) not null,
-   Descripcion        varchar(900) not null,
-   Departamento       varchar(10) not null,
-   Seccion            varchar(9) not null,
-   Stock              int not null,
-   PrecioVenta        float not null,
-   PrecioCompra       float not null,
-   constraint pk_IdProdcuto primary key (IdProducto)
-);
+
 
 /*==============================================================*/
 /* Table: Pedidos                                             */
@@ -171,6 +173,10 @@ alter table Tarjetas add constraint Tarjetas_Clientes_FK foreign key (IdCliente)
       
 CREATE USER 'admin1'@'localhost' IDENTIFIED BY 'hola.123';
 GRANT ALL PRIVILEGES ON Worldculture.Usuarios TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Productos TO 'admin1'@'localhost';
+select * from Productos;
+select * from Usuarios;
+
 
 insert into Usuarios(IdUsuario,Nombre,Telefono,Email,Contrasenia,Sexo,Tipo) 
 values(1,"Mauro castellanos Diaz","3931041660","administrador@gmail.com","Hola","H","A");
