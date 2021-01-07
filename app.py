@@ -1,7 +1,7 @@
 from flask import Flask, render_template, abort, request, redirect, url_for
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 from flask_sqlalchemy import SQLAlchemy
-from modelo.models import db, Usuario, Producto
+from modelo.models import db, Usuario, Producto, Pedido, Cliente, Administrador, Direccion, Tarjeta, Paqueterias, Envio, Venta
 
 app = Flask(__name__)
 app.secret_key = 'W0rldCultur3'
@@ -230,6 +230,341 @@ def eliminarUsuario(id):
     return redirect(url_for('consultaUsuarios'))
         
 #Fin Crud Usuarios
+
+#Inicio Crud Pedidos
+@app.route('/Pedidos')
+def consultaPedidos():
+    p = Pedido()
+    p=p.consultaGeneral()
+    return render_template('/Pedidos/AdministrarPedidos.html',Pedidos=p)
+
+@app.route('/AddPedidos',methods=['POST'])
+def guardarPedidos():
+    p = Pedido()
+    p.IdProducto = request.form['IdProducto']
+    p.Fecha = request.form['Fecha']
+    p.IdCliente = request.form['IdCliente']
+    p.insertar()
+    return redirect(url_for('consultaPedidos'))
+
+@app.route('/EditPedidos/<int:id>')
+def consultarPedido(id):
+    p = Pedido()
+    p.IdPedido = id
+    p = p.consultaIndividual()
+    return render_template('Pedidos/EditPedidos.html', Pedido=p)
+
+@app.route('/Pedidos/modificar', methods=['POST'])
+def actualizarPedido():
+    p = Pedido()
+    p.IdPedido = request.form['IdPedido']
+    p.IdProducto = request.form['IdProducto']
+    p.Fecha = request.form['Fecha']
+    p.IdCliente = request.form['IdCliente']
+    p.actualizar()
+    return redirect(url_for('consultaPedidos'))
+
+@app.route('/DeletePedidos/<int:id>')
+def eliminarPedido(id):
+    p = Pedido()
+    p.IdPedido = id
+    p.eliminar()
+    return redirect(url_for('consultaPedidos'))
+        
+#Fin Crud Pedidos
+
+#Inicio Crud Clientes
+@app.route('/Clientes')
+def consultaClientes():
+    c = Cliente()
+    c=c.consultaGeneral()
+    return render_template('/Clientes/AdministrarClientes.html',Clientes=c)
+
+@app.route('/AddClientes',methods=['POST'])
+def guardarClientes():
+    c = Cliente()
+    c.IdUsuario = request.form['IdUsuario']
+    c.insertar()
+    return redirect(url_for('consultaClientes'))
+
+@app.route('/EditClientes/<int:id>')
+def consultarCliente(id):
+    c = Cliente()
+    c.IdCliente = id
+    c = c.consultaIndividual()
+    return render_template('Clientes/EditClientes.html', Cliente=c)
+
+@app.route('/Clientes/modificar', methods=['POST'])
+def actualizarCliente():
+    c = Cliente()
+    c.IdCliente = request.form['IdCliente']
+    c.IdUsuario = request.form['IdUsuario']
+    c.actualizar()
+    return redirect(url_for('consultaClientes'))
+
+@app.route('/DeleteClientes/<int:id>')
+def eliminarCliente(id):
+    c = Cliente()
+    c.IdCliente = id
+    c.eliminar()
+    return redirect(url_for('consultaClientes'))
+        
+#Fin Crud Clientes
+
+#Inicio Crud Administradores
+@app.route('/Administradores')
+def consultaAdministradores():
+    a = Administrador()
+    a = a.consultaGeneral()
+    return render_template('/Administradores/AdministrarAdministrador.html', Administradores=a)
+
+@app.route('/AddAdministradores',methods=['POST'])
+def guardarAdministradores():
+    a = Administrador()
+    a.IdUsuario = request.form['IdUsuario']
+    a.insertar()
+    return redirect(url_for('consultaAdministradores'))
+
+@app.route('/EditAdministradores/<int:id>')
+def consultarAdministrador(id):
+    a = Administrador()
+    a.IdAdministrador = id
+    a = a.consultaIndividual()
+    return render_template('Administradores/EditAdministrador.html', Administrador=a)
+
+@app.route('/Administradores/modificar', methods=['POST'])
+def actualizarAdministrador():
+    a = Administrador()
+    a.IdAdministrador = request.form['IdAdministrador']
+    a.IdUsuario = request.form['IdUsuario']
+    a.actualizar()
+    return redirect(url_for('consultaAdministradores'))
+
+@app.route('/DeleteAdministradores/<int:id>')
+def eliminarAdministrador(id):
+    a = Administrador()
+    a.IdAdministrador = id
+    a.eliminar()
+    return redirect(url_for('consultaAdministradores'))       
+#Fin Crud Administradores
+
+#Inicio Crud Direcciones
+@app.route('/Direcciones')
+def consultaDirecciones():
+    d = Direccion()
+    d = d.consultaGeneral()
+    return render_template('Direcciones/AdministrarDireccion.html', Direcciones=d)
+
+@app.route('/AddDirecciones',methods=['POST'])
+def guardarDirecciones():
+    d = Direccion()
+    d.Pais         = request.form['Pais']
+    d.Estado       = request.form['Estado']
+    d.Ciudad       = request.form['Ciudad']
+    d.Colonia      = request.form['Colonia']
+    d.Calle        = request.form['Calle']
+    d.CodigoPostal = request.form['CodigoPostal']
+    d.Descripcion  = request.form['Descripcion']
+    d.IdCliente    = request.form['IdCliente']
+    d.insertar()
+    return redirect(url_for('consultaDirecciones'))
+
+@app.route('/EditDirecciones/<int:id>')
+def consultarDireccion(id):
+    d = Direccion()
+    d.IdDireccion = id
+    d = d.consultaIndividual()
+    return render_template('Direcciones/EditDireccion.html', Direccion=d)
+
+@app.route('/Direcciones/modificar', methods=['POST'])
+def actualizarDireccion():
+    d = Direccion()
+    d.IdDireccion  = request.form['IdDireccion']
+    d.Pais         = request.form['Pais']
+    d.Estado       = request.form['Estado']
+    d.Ciudad       = request.form['Ciudad']
+    d.Colonia      = request.form['Colonia']
+    d.Calle        = request.form['Calle']
+    d.CodigoPostal = request.form['CodigoPostal']
+    d.Descripcion  = request.form['Descripcion']
+    d.IdCliente    = request.form['IdCliente']
+    d.actualizar()
+    return redirect(url_for('consultaDirecciones'))
+
+@app.route('/DeleteDirecciones/<int:id>')
+def eliminarDireccion(id):
+    d = Direccion()
+    d.IdDireccion = id
+    d.eliminar()
+    return redirect(url_for('consultaDirecciones'))       
+#Fin Crud Direcciones
+
+#Inicio Crud Tarjetas
+@app.route('/Tarjetas')
+def consultaTarjetas():
+    t = Tarjeta()
+    t = t.consultaGeneral()
+    return render_template('Tarjetas/AdministrarTarjetas.html', Tarjetas=t)
+
+@app.route('/AddTarjetas',methods=['POST'])
+def guardarTarjetas():
+    t = Tarjeta()
+    t.NumeroTarjeta    = request.form['NumeroTarjeta']
+    t.FechaVencimiento = request.form['Fecha']
+    t.Cvv              = request.form['CVV']
+    t.Titular          = request.form['Titular']
+    t.IdCliente        = request.form['IdCliente']
+    t.insertar()
+    return redirect(url_for('consultaTarjetas'))
+
+@app.route('/EditTarjetas/<int:id>')
+def consultarTarjeta(id):
+    t = Tarjeta()
+    t.IdTarjeta = id
+    t = t.consultaIndividual()
+    return render_template('Tarjetas/EditTarjetas.html', Tarjeta=t)
+
+@app.route('/Tarjetas/modificar', methods=['POST'])
+def actualizarTarjeta():
+    t = Tarjeta()
+    t.IdTarjeta    = request.form['IdTarjeta']
+    t.NumeroTarjeta    = request.form['NumeroTarjeta']
+    t.FechaVencimiento = request.form['Fecha']
+    t.Cvv              = request.form['CVV']
+    t.Titular          = request.form['Titular']
+    t.IdCliente        = request.form['IdCliente']
+    t.actualizar()
+    return redirect(url_for('consultaTarjetas'))
+
+@app.route('/DeleteTarjetas/<int:id>')
+def eliminarTarjeta(id):
+    t = Tarjeta()
+    t.IdTarjeta = id
+    t.eliminar()
+    return redirect(url_for('consultaTarjetas'))       
+#Fin Crud Tarjetas
+
+#Inicio Crud Paqueterias
+@app.route('/Paqueterias')
+def consultaPaqueterias():
+    p = Paqueterias()
+    p = p.consultaGeneral()
+    return render_template('Paqueteria/AdministrarPaqueteria.html', Paqueterias=p)
+
+@app.route('/AddPaqueterias',methods=['POST'])
+def guardarPaqueterias():
+    p = Paqueterias()
+    p.Nombre = request.form['Nombre']
+    p.insertar()
+    return redirect(url_for('consultaPaqueterias'))
+
+@app.route('/EditPaqueterias/<int:id>')
+def consultarPaqueterias(id):
+    p = Paqueterias()
+    p.IdPaqueteria  = id
+    p = p.consultaIndividual()
+    return render_template('Paqueteria/EditPaqueteria.html', Paqueteria=p)
+
+@app.route('/Paqueterias/modificar', methods=['POST'])
+def actualizarPaqueteria():
+    p = Paqueterias()
+    p.IdPaqueteria    = request.form['IdPaqueteria']
+    p.Nombre = request.form['Nombre']
+    p.actualizar()
+    return redirect(url_for('consultaPaqueterias'))
+
+@app.route('/DeletePaqueterias/<int:id>')
+def eliminarPaqueteria(id):
+    p = Paqueterias()
+    p.IdPaqueteria    = id
+    p.eliminar()
+    return redirect(url_for('consultaPaqueterias'))       
+#Fin Crud Paqueterias
+
+#Inicio Crud Envios
+@app.route('/Envios')
+def consultaEnvios():
+    e = Envio()
+    e = e.consultaGeneral()
+    return render_template('Envios/AdministrarEnvio.html', Envios=e)
+
+@app.route('/AddEnvios',methods=['POST'])
+def guardarEnvios():
+    e = Envio()
+    e.IdPaqueteria = request.form['IdPaqueteria']
+    e.FechaSalida  = request.form['FechaSalida']
+    e.FechaArribo  = request.form['FechaArribo']
+    e.FechaEntrega = request.form['FechaEntrega']
+    e.insertar()
+    return redirect(url_for('consultaEnvios'))
+
+@app.route('/EditEnvios/<int:id>')
+def consultarEnvio(id):
+    e = Envio()
+    e.IdEnvios = id
+    e = e.consultaIndividual()
+    return render_template('Envios/EditEnvio.html', Envio=e)
+
+@app.route('/Envios/modificar', methods=['POST'])
+def actualizarEnvio():
+    e = Envio()
+    e.IdEnvios      = request.form['IdEnvio']
+    e.IdPaqueteria = request.form['IdPaqueteria']
+    e.FechaSalida  = request.form['FechaSalida']
+    e.FechaArribo  = request.form['FechaArribo']
+    e.FechaEntrega = request.form['FechaEntrega']
+    e.actualizar()
+    return redirect(url_for('consultaEnvios'))
+
+@app.route('/DeleteEnvios/<int:id>')
+def eliminarEnvio(id):
+    e = Envio()
+    e.IdEnvios = id
+    e.eliminar()
+    return redirect(url_for('consultaEnvios'))       
+#Fin Crud Envios
+
+#Inicio Crud Ventas
+@app.route('/Ventas')
+def consultaVentas():
+    v = Venta()
+    v = v.consultaGeneral()
+    return render_template('Ventas/AdministrarVenta.html', Ventas=v)
+
+@app.route('/AddVentas',methods=['POST'])
+def guardarVentas():
+    v = Venta()
+    v.IdPedido  = request.form['IdPedido']
+    v.idEnvio  = request.form['IdEnvio']
+    v.Fecha = request.form['Fecha']
+    v.insertar()
+    return redirect(url_for('consultaVentas'))
+
+@app.route('/EditVentas/<int:id>')
+def consultarVenta(id):
+    v = Venta()
+    v.IdVentas = id
+    v = v.consultaIndividual()
+    return render_template('Ventas/EditVenta.html', Venta=v)
+
+@app.route('/Ventas/modificar', methods=['POST'])
+def actualizarVenta():
+    v = Venta()
+    v.IdVentas     = request.form['IdVentas']
+    v.IdPedido  = request.form['IdPedido']
+    v.idEnvio  = request.form['IdEnvio']
+    v.Fecha  = request.form['Fecha']
+    v.actualizar()
+    return redirect(url_for('consultaVentas'))
+
+@app.route('/DeleteVentas/<int:id>')
+def eliminarVentas(id):
+    v = Venta()
+    v.IdVentas = id
+    v.eliminar()
+    return redirect(url_for('consultaVentas'))       
+#Fin Crud Ventas
+
 
 #Inicio Ruta Contacto
 @app.route('/Contacto')

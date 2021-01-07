@@ -14,10 +14,10 @@
         {% endfor %} {% endif %} {% endwith %}
 
         <div class="card card-body">
-            <form action="/AddPedidos" method="POST">
+            <form action="/AddTarjetas" method="POST">
 
                 <div class="form-group">
-                    <input type="number" name="IdProducto" placeholder="IdProducto" class="form-control" required>
+                    <input type="number" name="NumeroTarjeta" placeholder="NumeroTarjeta" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -25,10 +25,16 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="number" name="IdCliente" placeholder="IdCliente" class="form-control" required>
+                    <input type="number" name="CVV" placeholder="CVV" class="form-control" required>
                 </div>
 
+                <div class="form-group">
+                    <input type="text" name="Titular" placeholder="Titular" class="form-control" required>
+                </div>
                 
+                <div class="form-group">
+                    <input type="number" name="IdCliente" placeholder="IdCliente" class="form-control" required>
+                </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block">
@@ -44,23 +50,27 @@
         <table class="table table-striped table-bordered bg-white table-sm">
             <thead>
                 <tr>
-                    <td>IdPedido</td>
-                    <td>IdProducto</td>
-                    <td>Fecha</td>
+                    <td>IdTarjeta</td>
+                    <td>Numero Tarjeta</td>
+                    <td>Fecha Vencimiento</td>
+                    <td>CVV</td>
+                    <td>Titular</td>
                     <td>IdCliente</td>
                     <td>Opciones</td>
                 </tr>
             </thead>
             <tbody>
-                {% for Pedido in Pedidos %}
+                {% for Tarjeta in Tarjetas %}
                 <tr>
-                    <td>{{ Pedido.IdPedido }}</td>
-                    <td>{{ Pedido.IdProducto }}</td>
-                    <td>{{ Pedido.Fecha }}</td>
-                    <td>{{ Pedido.IdCliente }}</td>
+                    <td>{{Tarjeta.IdTarjeta}}     </td>
+                    <td>{{Tarjeta.NumeroTarjeta}}   </td>
+                    <td>{{Tarjeta.FechaVencimiento}}  </td>
+                    <td>{{Tarjeta.Cvv}}   </td>
+                    <td>{{Tarjeta.Titular}}   </td>
+                    <td>{{Tarjeta.IdCliente}}   </td>
                     <td>
-                        <a href="/EditPedidos/{{Pedido.IdPedido}}" class="btn btn-warning btn-block">Editar</a>
-                        <a href="/DeletePedidos/{{Pedido.IdPedido}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
+                        <a href="/EditTarjetas/{{Tarjeta.IdTarjeta}}" class="btn btn-warning btn-block">Editar</a>
+                        <a href="/DeleteTarjetas/{{Tarjeta.IdTarjeta}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}

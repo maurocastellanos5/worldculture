@@ -14,21 +14,23 @@
         {% endfor %} {% endif %} {% endwith %}
 
         <div class="card card-body">
-            <form action="/AddPedidos" method="POST">
+            <form action="/AddEnvios" method="POST">
 
                 <div class="form-group">
-                    <input type="number" name="IdProducto" placeholder="IdProducto" class="form-control" required>
+                    <input type="number" name="IdPaqueteria" placeholder="IdPaqueteria" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="date" name="Fecha" placeholder="Fecha" class="form-control" required>
+                    <input type="date" name="FechaArribo" placeholder="FechaArribo" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="number" name="IdCliente" placeholder="IdCliente" class="form-control" required>
+                    <input type="date" name="FechaSalida" placeholder="FechaSalida" class="form-control" required>
                 </div>
 
-                
+                <div class="form-group">
+                    <input type="date" name="FechaEntrega" placeholder="FechaEntrega" class="form-control" required>
+                </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block">
@@ -44,23 +46,25 @@
         <table class="table table-striped table-bordered bg-white table-sm">
             <thead>
                 <tr>
-                    <td>IdPedido</td>
-                    <td>IdProducto</td>
-                    <td>Fecha</td>
-                    <td>IdCliente</td>
+                    <td>IdEnvio</td>
+                    <td>IdPaqueteria</td>
+                    <td>FechaArribo</td>
+                    <td>FechaSalida</td>
+                    <td>FechaEntrega</td>
                     <td>Opciones</td>
                 </tr>
             </thead>
             <tbody>
-                {% for Pedido in Pedidos %}
+                {% for Envio in Envios %}
                 <tr>
-                    <td>{{ Pedido.IdPedido }}</td>
-                    <td>{{ Pedido.IdProducto }}</td>
-                    <td>{{ Pedido.Fecha }}</td>
-                    <td>{{ Pedido.IdCliente }}</td>
+                    <td>{{Envio.IdEnvios}}     </td>
+                    <td>{{Envio.IdPaqueteria}}   </td>
+                    <td>{{Envio.FechaArribo}}   </td>
+                    <td>{{Envio.FechaSalida}}  </td>
+                    <td>{{Envio.FechaEntrega}}   </td>
                     <td>
-                        <a href="/EditPedidos/{{Pedido.IdPedido}}" class="btn btn-warning btn-block">Editar</a>
-                        <a href="/DeletePedidos/{{Pedido.IdPedido}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
+                        <a href="/EditEnvios/{{Envio.IdEnvios}}" class="btn btn-warning btn-block">Editar</a>
+                        <a href="/DeleteEnvios/{{Envio.IdEnvios}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -1,0 +1,30 @@
+{% extends 'LayoutA.html'%} {% block body %}
+<div class="col-md-8 offset-md-2">
+    <div class="card card-body">
+        <form action="/Ventas/modificar" method="POST">
+            
+            <div class="form-group">
+                <input type="number" value="{{Venta.IdVentas}}" name="IdVentas" placeholder="IdVentas" class="form-control" readonly required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" value="{{Venta.IdPedido}}" name="IdPedido" placeholder="IdPedido" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" value="{{Venta.idEnvio}}" name="IdEnvio" placeholder="IdEnvio" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <input type="date"  value="{{Venta.Fecha}}"name="Fecha" placeholder="Fecha" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -35,6 +35,19 @@ create table Usuarios
 );
 
 /*==============================================================*/
+/* Table: Pedidos                                             */
+/*==============================================================*/
+create table Pedidos
+(
+   IdPedido           int auto_increment not null,
+   IdProducto         int not null,
+   Fecha              date not null,
+   IdCliente          int not null,
+   constraint pk_IdPedido primary key (IdPedido)
+);
+
+
+/*==============================================================*/
 /* Table:  Clientes                            */
 /*==============================================================*/
 create table Clientes
@@ -88,32 +101,15 @@ create table Tarjetas
 );
 
 
-
 /*==============================================================*/
-/* Table: Pedidos                                             */
+/* Table: Paqueteria                                            */
 /*==============================================================*/
-create table Pedidos
+create table Paqueteria
 (
-   IdPedido           int auto_increment not null,
-   IdProducto         int not null,
-   Fecha              date not null,
-   IdCliente          int not null,
-   constraint pk_IdPedido primary key (IdPedido)
+   IdPaqueteria        int auto_increment not null,
+   Nombre              varchar(50) not null,
+   constraint pk_IdPaqueteria unique (IdPaqueteria)
 );
-
-
-/*==============================================================*/
-/* Table: Ventas                                              */
-/*==============================================================*/
-create table Ventas
-(
-   IdVentas      		int  not null,
-   IdPedido             int  not null,
-   idEnvio              int  not null,
-   Fecha                date not null,
-   constraint pk_IdVentas primary key (IdVentas)
-);
-
 
 /*==============================================================*/
 /* Table: Envios                                             */
@@ -128,18 +124,17 @@ create table Envios
    constraint pk_IdEnvios primary key (IdEnvios)
 );
 
-
-
 /*==============================================================*/
-/* Table: Paqueteria                                            */
+/* Table: Ventas                                              */
 /*==============================================================*/
-create table Paqueteria
+create table Ventas
 (
-   IdPaqueteria        int auto_increment not null,
-   Nombre              varchar(50) not null,
-   constraint pk_IdPaqueteria unique (IdPaqueteria)
+   IdVentas      		int  not null,
+   IdPedido             int  not null,
+   idEnvio              int  not null,
+   Fecha                date not null,
+   constraint pk_IdVentas primary key (IdVentas)
 );
-
 
 
 /*==============================================================*/
@@ -175,8 +170,23 @@ alter table Tarjetas add constraint Tarjetas_Clientes_FK foreign key (IdCliente)
 CREATE USER 'admin1'@'localhost' IDENTIFIED BY 'hola.123';
 GRANT ALL PRIVILEGES ON Worldculture.Usuarios TO 'admin1'@'localhost';
 GRANT ALL PRIVILEGES ON Worldculture.Productos TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Pedidos TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Clientes TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Administradores TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Direcciones TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Tarjetas TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Paqueteria TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Envios TO 'admin1'@'localhost';
+GRANT ALL PRIVILEGES ON Worldculture.Paqueteria TO 'admin1'@'localhost';
+
 select * from Productos;
 select * from Usuarios;
+select * from Pedidos;
+select * from Clientes;
+select * from Administradores;
+select * from Direcciones;
+select * from Tarjetas;
+select * from Paqueteria;
 
 
 insert into Usuarios(IdUsuario,Nombre,Telefono,Email,Contrasenia,Sexo,Tipo) 

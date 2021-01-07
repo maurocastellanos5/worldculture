@@ -1,0 +1,42 @@
+{% extends 'LayoutA.html'%} {% block body %}
+<div class="col-md-8 offset-md-2">
+    <div class="card card-body">
+        <form action="/Direcciones/modificar" method="POST">
+            <div class="form-group">
+                <input type="number" value="{{Direccion.IdDireccion}}" name="IdDireccion" placeholder="IdDireccion" class="form-control"  readonly required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" value="{{Direccion.Pais}}" name="Pais" placeholder="Pais" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" value="{{Direccion.Estado}}" name="Estado" placeholder="Estado" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" value="{{Direccion.Ciudad}}" name="Ciudad" placeholder="Ciudad" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" value="{{Direccion.Colonia}}" name="Colonia" placeholder="Colonia" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" value="{{Direccion.Calle}}" name="Calle" placeholder="Calle" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="number"value="{{Direccion.CodigoPostal}}" name="CodigoPostal" placeholder="CodigoPostal" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" value="{{Direccion.Descripcion}}" name="Descripcion" placeholder="Descripcion" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="number"value="{{Direccion.IdCliente}}" name="IdCliente" placeholder="IdCliente" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

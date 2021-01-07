@@ -1,0 +1,23 @@
+{% extends 'LayoutA.html'%} {% block body %}
+<div class="col-md-8 offset-md-2">
+    <div class="card card-body">
+        <form action="/Administradores/modificar" method="POST">
+
+            <div class="form-group">
+                <input type="number" name="IdAdministrador" placeholder="IdAdministrador" value="{{Administrador.IdAdministrador}}" class="form-control"readonly required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="IdUsuario" placeholder="IdUsuario" value="{{Administrador.IdUsuario}}" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -186,7 +186,6 @@ class Pedido(db.Model):
     IdProducto  = Column(Integer, ForeignKey('Productos.IdProducto'))
     Fecha       = Column(Date, nullable=False)
     IdCliente   = Column(Integer, ForeignKey('Clientes.IdCliente'))
-
     def insertar(self):
         db.session.add(self)
         db.session.commit()

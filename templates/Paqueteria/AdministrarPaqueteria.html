@@ -14,21 +14,11 @@
         {% endfor %} {% endif %} {% endwith %}
 
         <div class="card card-body">
-            <form action="/AddPedidos" method="POST">
+            <form action="/AddPaqueterias" method="POST">
 
                 <div class="form-group">
-                    <input type="number" name="IdProducto" placeholder="IdProducto" class="form-control" required>
+                    <input type="text" name="Nombre" placeholder="Nombre" class="form-control" required>
                 </div>
-
-                <div class="form-group">
-                    <input type="date" name="Fecha" placeholder="Fecha" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="number" name="IdCliente" placeholder="IdCliente" class="form-control" required>
-                </div>
-
-                
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block">
@@ -44,23 +34,19 @@
         <table class="table table-striped table-bordered bg-white table-sm">
             <thead>
                 <tr>
-                    <td>IdPedido</td>
-                    <td>IdProducto</td>
-                    <td>Fecha</td>
-                    <td>IdCliente</td>
+                    <td>IdPaqueteria</td>
+                    <td>Nombre</td>
                     <td>Opciones</td>
                 </tr>
             </thead>
             <tbody>
-                {% for Pedido in Pedidos %}
+                {% for Paqueteria in Paqueterias %}
                 <tr>
-                    <td>{{ Pedido.IdPedido }}</td>
-                    <td>{{ Pedido.IdProducto }}</td>
-                    <td>{{ Pedido.Fecha }}</td>
-                    <td>{{ Pedido.IdCliente }}</td>
+                    <td>{{Paqueteria.IdPaqueteria}} </td>
+                    <td>{{Paqueteria.Nombre}}       </td>
                     <td>
-                        <a href="/EditPedidos/{{Pedido.IdPedido}}" class="btn btn-warning btn-block">Editar</a>
-                        <a href="/DeletePedidos/{{Pedido.IdPedido}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
+                        <a href="/EditPaqueterias/{{Paqueteria.IdPaqueteria}}" class="btn btn-warning btn-block">Editar</a>
+                        <a href="/DeletePaqueterias/{{Paqueteria.IdPaqueteria}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}
