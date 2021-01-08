@@ -134,12 +134,14 @@ def CalzadoNina():
 
 #Inicio Crud Productos
 @app.route('/Productos')
+@login_required
 def consultaProductos():
     p = Producto()
     p=p.consultaGeneral()
     return render_template('/Productos/AdministrarProductos.html',Productos=p)
 
 @app.route('/AddProductos',methods=['POST'])
+@login_required
 def guardarProducto():
     p = Producto()
     p.CodigoBarras = request.form['Codigo']
@@ -154,6 +156,7 @@ def guardarProducto():
     return redirect(url_for('consultaProductos'))
 
 @app.route('/EditProductos/<int:id>')
+@login_required
 def consultarProducto(id):
     p = Producto()
     p.IdProducto = id
@@ -161,6 +164,7 @@ def consultarProducto(id):
     return render_template('Productos/EditProductos.html', Producto=p)
 
 @app.route('/Productos/modificar', methods=['POST'])
+@login_required
 def actualizarProducto():
     p = Producto()
     p.IdProducto = request.form['IdProducto']
@@ -176,6 +180,7 @@ def actualizarProducto():
     return redirect(url_for('consultaProductos'))
 
 @app.route('/DeleteProductos/<int:id>')
+@login_required
 def eliminarProducto(id):
     p = Producto()
     p.IdProducto = id
@@ -185,12 +190,14 @@ def eliminarProducto(id):
 
 #Inicio Crud Usuarios
 @app.route('/Usuarios')
+@login_required
 def consultaUsuarios():
     u = Usuario()
     u=u.consultaGeneral()
     return render_template('/Usuarios/AdministrarAdmin.html',Usuarios=u)
 
 @app.route('/AddUsuarios',methods=['POST'])
+@login_required
 def guardarUsuarios():
     u = Usuario()
     u.Nombre = request.form['Nombre']
@@ -203,6 +210,7 @@ def guardarUsuarios():
     return redirect(url_for('consultaUsuarios'))
 
 @app.route('/EditUsuarios/<int:id>')
+@login_required
 def consultarUsuario(id):
     u = Usuario()
     u.IdUsuario = id
@@ -210,6 +218,7 @@ def consultarUsuario(id):
     return render_template('Usuarios/EditAdministradores.html', Usuario=u)
 
 @app.route('/Usuarios/modificar', methods=['POST'])
+@login_required
 def actualizarUsuario():
     u = Usuario()
     u.IdUsuario = request.form['IdUsuario']
@@ -223,6 +232,7 @@ def actualizarUsuario():
     return redirect(url_for('consultaUsuarios'))
 
 @app.route('/DeleteUsuario/<int:id>')
+@login_required
 def eliminarUsuario(id):
     u = Usuario()
     u.IdUsuario = id
@@ -233,12 +243,14 @@ def eliminarUsuario(id):
 
 #Inicio Crud Pedidos
 @app.route('/Pedidos')
+@login_required
 def consultaPedidos():
     p = Pedido()
     p=p.consultaGeneral()
     return render_template('/Pedidos/AdministrarPedidos.html',Pedidos=p)
 
 @app.route('/AddPedidos',methods=['POST'])
+@login_required
 def guardarPedidos():
     p = Pedido()
     p.IdProducto = request.form['IdProducto']
@@ -248,6 +260,7 @@ def guardarPedidos():
     return redirect(url_for('consultaPedidos'))
 
 @app.route('/EditPedidos/<int:id>')
+@login_required
 def consultarPedido(id):
     p = Pedido()
     p.IdPedido = id
@@ -255,6 +268,7 @@ def consultarPedido(id):
     return render_template('Pedidos/EditPedidos.html', Pedido=p)
 
 @app.route('/Pedidos/modificar', methods=['POST'])
+@login_required
 def actualizarPedido():
     p = Pedido()
     p.IdPedido = request.form['IdPedido']
@@ -265,6 +279,7 @@ def actualizarPedido():
     return redirect(url_for('consultaPedidos'))
 
 @app.route('/DeletePedidos/<int:id>')
+@login_required
 def eliminarPedido(id):
     p = Pedido()
     p.IdPedido = id
@@ -275,12 +290,14 @@ def eliminarPedido(id):
 
 #Inicio Crud Clientes
 @app.route('/Clientes')
+@login_required
 def consultaClientes():
     c = Cliente()
     c=c.consultaGeneral()
     return render_template('/Clientes/AdministrarClientes.html',Clientes=c)
 
 @app.route('/AddClientes',methods=['POST'])
+@login_required
 def guardarClientes():
     c = Cliente()
     c.IdUsuario = request.form['IdUsuario']
@@ -288,6 +305,7 @@ def guardarClientes():
     return redirect(url_for('consultaClientes'))
 
 @app.route('/EditClientes/<int:id>')
+@login_required
 def consultarCliente(id):
     c = Cliente()
     c.IdCliente = id
@@ -295,6 +313,7 @@ def consultarCliente(id):
     return render_template('Clientes/EditClientes.html', Cliente=c)
 
 @app.route('/Clientes/modificar', methods=['POST'])
+@login_required
 def actualizarCliente():
     c = Cliente()
     c.IdCliente = request.form['IdCliente']
@@ -303,6 +322,7 @@ def actualizarCliente():
     return redirect(url_for('consultaClientes'))
 
 @app.route('/DeleteClientes/<int:id>')
+@login_required
 def eliminarCliente(id):
     c = Cliente()
     c.IdCliente = id
@@ -313,12 +333,14 @@ def eliminarCliente(id):
 
 #Inicio Crud Administradores
 @app.route('/Administradores')
+@login_required
 def consultaAdministradores():
     a = Administrador()
     a = a.consultaGeneral()
     return render_template('/Administradores/AdministrarAdministrador.html', Administradores=a)
 
 @app.route('/AddAdministradores',methods=['POST'])
+@login_required
 def guardarAdministradores():
     a = Administrador()
     a.IdUsuario = request.form['IdUsuario']
@@ -326,6 +348,7 @@ def guardarAdministradores():
     return redirect(url_for('consultaAdministradores'))
 
 @app.route('/EditAdministradores/<int:id>')
+@login_required
 def consultarAdministrador(id):
     a = Administrador()
     a.IdAdministrador = id
@@ -333,6 +356,7 @@ def consultarAdministrador(id):
     return render_template('Administradores/EditAdministrador.html', Administrador=a)
 
 @app.route('/Administradores/modificar', methods=['POST'])
+@login_required
 def actualizarAdministrador():
     a = Administrador()
     a.IdAdministrador = request.form['IdAdministrador']
@@ -341,6 +365,7 @@ def actualizarAdministrador():
     return redirect(url_for('consultaAdministradores'))
 
 @app.route('/DeleteAdministradores/<int:id>')
+@login_required
 def eliminarAdministrador(id):
     a = Administrador()
     a.IdAdministrador = id
@@ -350,12 +375,14 @@ def eliminarAdministrador(id):
 
 #Inicio Crud Direcciones
 @app.route('/Direcciones')
+@login_required
 def consultaDirecciones():
     d = Direccion()
     d = d.consultaGeneral()
     return render_template('Direcciones/AdministrarDireccion.html', Direcciones=d)
 
 @app.route('/AddDirecciones',methods=['POST'])
+@login_required
 def guardarDirecciones():
     d = Direccion()
     d.Pais         = request.form['Pais']
@@ -370,6 +397,7 @@ def guardarDirecciones():
     return redirect(url_for('consultaDirecciones'))
 
 @app.route('/EditDirecciones/<int:id>')
+@login_required
 def consultarDireccion(id):
     d = Direccion()
     d.IdDireccion = id
@@ -377,6 +405,7 @@ def consultarDireccion(id):
     return render_template('Direcciones/EditDireccion.html', Direccion=d)
 
 @app.route('/Direcciones/modificar', methods=['POST'])
+@login_required
 def actualizarDireccion():
     d = Direccion()
     d.IdDireccion  = request.form['IdDireccion']
@@ -392,6 +421,7 @@ def actualizarDireccion():
     return redirect(url_for('consultaDirecciones'))
 
 @app.route('/DeleteDirecciones/<int:id>')
+@login_required
 def eliminarDireccion(id):
     d = Direccion()
     d.IdDireccion = id
@@ -401,12 +431,14 @@ def eliminarDireccion(id):
 
 #Inicio Crud Tarjetas
 @app.route('/Tarjetas')
+@login_required
 def consultaTarjetas():
     t = Tarjeta()
     t = t.consultaGeneral()
     return render_template('Tarjetas/AdministrarTarjetas.html', Tarjetas=t)
 
 @app.route('/AddTarjetas',methods=['POST'])
+@login_required
 def guardarTarjetas():
     t = Tarjeta()
     t.NumeroTarjeta    = request.form['NumeroTarjeta']
@@ -418,6 +450,7 @@ def guardarTarjetas():
     return redirect(url_for('consultaTarjetas'))
 
 @app.route('/EditTarjetas/<int:id>')
+@login_required
 def consultarTarjeta(id):
     t = Tarjeta()
     t.IdTarjeta = id
@@ -425,6 +458,7 @@ def consultarTarjeta(id):
     return render_template('Tarjetas/EditTarjetas.html', Tarjeta=t)
 
 @app.route('/Tarjetas/modificar', methods=['POST'])
+@login_required
 def actualizarTarjeta():
     t = Tarjeta()
     t.IdTarjeta    = request.form['IdTarjeta']
@@ -437,6 +471,7 @@ def actualizarTarjeta():
     return redirect(url_for('consultaTarjetas'))
 
 @app.route('/DeleteTarjetas/<int:id>')
+@login_required
 def eliminarTarjeta(id):
     t = Tarjeta()
     t.IdTarjeta = id
@@ -446,12 +481,14 @@ def eliminarTarjeta(id):
 
 #Inicio Crud Paqueterias
 @app.route('/Paqueterias')
+@login_required
 def consultaPaqueterias():
     p = Paqueterias()
     p = p.consultaGeneral()
     return render_template('Paqueteria/AdministrarPaqueteria.html', Paqueterias=p)
 
 @app.route('/AddPaqueterias',methods=['POST'])
+@login_required
 def guardarPaqueterias():
     p = Paqueterias()
     p.Nombre = request.form['Nombre']
@@ -459,6 +496,7 @@ def guardarPaqueterias():
     return redirect(url_for('consultaPaqueterias'))
 
 @app.route('/EditPaqueterias/<int:id>')
+@login_required
 def consultarPaqueterias(id):
     p = Paqueterias()
     p.IdPaqueteria  = id
@@ -466,6 +504,7 @@ def consultarPaqueterias(id):
     return render_template('Paqueteria/EditPaqueteria.html', Paqueteria=p)
 
 @app.route('/Paqueterias/modificar', methods=['POST'])
+@login_required
 def actualizarPaqueteria():
     p = Paqueterias()
     p.IdPaqueteria    = request.form['IdPaqueteria']
@@ -474,6 +513,7 @@ def actualizarPaqueteria():
     return redirect(url_for('consultaPaqueterias'))
 
 @app.route('/DeletePaqueterias/<int:id>')
+@login_required
 def eliminarPaqueteria(id):
     p = Paqueterias()
     p.IdPaqueteria    = id
@@ -483,12 +523,14 @@ def eliminarPaqueteria(id):
 
 #Inicio Crud Envios
 @app.route('/Envios')
+@login_required
 def consultaEnvios():
     e = Envio()
     e = e.consultaGeneral()
     return render_template('Envios/AdministrarEnvio.html', Envios=e)
 
 @app.route('/AddEnvios',methods=['POST'])
+@login_required
 def guardarEnvios():
     e = Envio()
     e.IdPaqueteria = request.form['IdPaqueteria']
@@ -499,6 +541,7 @@ def guardarEnvios():
     return redirect(url_for('consultaEnvios'))
 
 @app.route('/EditEnvios/<int:id>')
+@login_required
 def consultarEnvio(id):
     e = Envio()
     e.IdEnvios = id
@@ -506,6 +549,7 @@ def consultarEnvio(id):
     return render_template('Envios/EditEnvio.html', Envio=e)
 
 @app.route('/Envios/modificar', methods=['POST'])
+@login_required
 def actualizarEnvio():
     e = Envio()
     e.IdEnvios      = request.form['IdEnvio']
@@ -517,6 +561,7 @@ def actualizarEnvio():
     return redirect(url_for('consultaEnvios'))
 
 @app.route('/DeleteEnvios/<int:id>')
+@login_required
 def eliminarEnvio(id):
     e = Envio()
     e.IdEnvios = id
@@ -526,12 +571,14 @@ def eliminarEnvio(id):
 
 #Inicio Crud Ventas
 @app.route('/Ventas')
+@login_required
 def consultaVentas():
     v = Venta()
     v = v.consultaGeneral()
     return render_template('Ventas/AdministrarVenta.html', Ventas=v)
 
 @app.route('/AddVentas',methods=['POST'])
+@login_required
 def guardarVentas():
     v = Venta()
     v.IdPedido  = request.form['IdPedido']
@@ -541,6 +588,7 @@ def guardarVentas():
     return redirect(url_for('consultaVentas'))
 
 @app.route('/EditVentas/<int:id>')
+@login_required
 def consultarVenta(id):
     v = Venta()
     v.IdVentas = id
@@ -548,6 +596,7 @@ def consultarVenta(id):
     return render_template('Ventas/EditVenta.html', Venta=v)
 
 @app.route('/Ventas/modificar', methods=['POST'])
+@login_required
 def actualizarVenta():
     v = Venta()
     v.IdVentas     = request.form['IdVentas']
@@ -558,6 +607,7 @@ def actualizarVenta():
     return redirect(url_for('consultaVentas'))
 
 @app.route('/DeleteVentas/<int:id>')
+@login_required 
 def eliminarVentas(id):
     v = Venta()
     v.IdVentas = id
@@ -574,12 +624,14 @@ def Contacto():
 
 #Inicio Ruta Carrtio
 @app.route('/Carrito')
+@login_required
 def Carrito():
     return render_template('/Carrito/Carrito.html')
 #Fin Ruta Carrito
 
 #Inicio Ruta mis Pedidos
 @app.route('/MisPedidos')
+@login_required
 def MisPedidos():
     return render_template('/Pedidos/MisPedidos.html')
 #Fin Ruta mis Pedidos

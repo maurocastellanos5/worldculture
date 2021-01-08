@@ -222,6 +222,7 @@ li.move-right {
 
 .roww {
     margin-top: 90px;
+    font-size: 15px;
 }
 
 .header {
@@ -232,7 +233,7 @@ li.move-right {
 }
 
 .footer {
-    margin-top: 800px;
+    margin-top: 408px;
 }
 
 .header::after {
