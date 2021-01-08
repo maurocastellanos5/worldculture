@@ -84,9 +84,11 @@
                     <li>
                         <a href="/Carrito">Carrito</a>
                     </li>
+                    {% if current_user.is_authenticated %}
                     <li>
                         <a href="/MisPedidos">Mis Pedidos</a>
                     </li>
+                    {% endif %}
                     <li class="move-right">
                         <a href="#">Bienvenido {% if current_user.is_authenticated %}: {{current_user.Nombre}} {%endif%} </a>
                     </li>
