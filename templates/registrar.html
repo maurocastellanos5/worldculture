@@ -48,39 +48,6 @@
             </form>
         </div>
     </div>
-    {% if current_user.is_authenticated %}
-    <div class="col-md-7">
-        <table class="table table-striped table-bordered bg-white table-sm">
-            <thead>
-                <tr>
-                    <td>Nombre</td>
-                    <td>Telefono</td>
-                    <td>Email</td>
-                    <td>Contraseña</td>
-                    <td>Tipo</td>
-                    <td>Sexo</td>
-                    <td>Opciones</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for usuario in Usuarios %}
-                <tr>
-                    <td>{{usuario.Nombre}} </td>
-                    <td>{{usuario.Telefono}} </td>
-                    <td>{{usuario.Email}} </td>
-                    <td>{{usuario.Contrasenia}} </td>
-                    <td>{{usuario.Tipo}} </td>
-                    <td>{{usuario.Sexo}} </td>
-                    <td>
-                        <a href="/EditUsuarios/{{usuario.IdUsuario}}" class="btn btn-warning btn-block">Editar</a>
-                        <a href="/DeleteUsuario/{{usuario.IdUsuario}}" class="btn btn-danger btn-block btn-delete">Eliminar</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
 </div>
 
 {% endblock %}

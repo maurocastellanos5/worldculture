@@ -20,21 +20,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Flask</a>
-                    <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-                    <a class="nav-link active" aria-current="page" href="/Productos">Productos</a>
-                    <a class="nav-link active" aria-current="page" href="#">Departamentos</a>
-                    <a class="nav-link active" aria-current="page" href="#">Secciones</a>
-                    <a class="nav-link active" aria-current="page" href="/Clientes">Clientes</a>
-                    <a class="nav-link active" aria-current="page" href="/Pedidos">Pedidos(envios)</a>
-                    <a class="nav-link active" aria-current="page" href="/Usuarios">Usuarios</a>
-                    <a class="nav-link active" aria-current="page" href="/Direcciones">Direcciones</a>
-                    <a class="nav-link active" aria-current="page" href="/Tarjetas">Tarjetas</a>
-                    <a class="nav-link active" aria-current="page" href="/Envios">Envios</a>
-                    <a class="nav-link active" aria-current="page" href="/Ventas">Ventas</a>
-                    <a class="nav-link active" aria-current="page" href="/Paqueterias">Paqueterias</a>
-                    <a class="nav-link active" aria-current="page" href="/Administradores">Administradores</a>
-                    <a class="nav-link active" aria-current="page" href="/cerrarSesion">Cerrar Sesion</a>
+                    {% if current_user.is_authenticated %}
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Flask</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/">Inicio</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Productos">Productos</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="#">Departamentos</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="#">Secciones</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Clientes">Clientes</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Pedidos">Pedidos(envios)</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Usuarios">Usuarios</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Direcciones">Direcciones</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Tarjetas">Tarjetas</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Envios">Envios</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Ventas">Ventas</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Paqueterias">Paqueterias</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/Administradores">Administradores</a> {% endif %} {% if current_user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/cerrarSesion">Cerrar Sesion</a> {% endif %}
+                    <a class="nav-link active" aria-current="page" href="/iniciar">Regresar</a>
                 </div>
             </div>
         </div>

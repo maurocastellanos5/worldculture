@@ -14,6 +14,7 @@ loginManager.init_app(app)
 loginManager.login_view = "inicio"
 
 
+
 @loginManager.user_loader
 def load_user(Id):
     return Usuario.query.get(int(Id))
@@ -50,6 +51,7 @@ def cerrarSesion():
         return render_template('login.html')
 
 #Fin de Configuración para el manejo de la sesion
+
 
 
 #Inicio Rutas Departamento Ropa
@@ -190,14 +192,12 @@ def eliminarProducto(id):
 
 #Inicio Crud Usuarios
 @app.route('/Usuarios')
-@login_required
 def consultaUsuarios():
     u = Usuario()
     u=u.consultaGeneral()
     return render_template('/Usuarios/AdministrarAdmin.html',Usuarios=u)
 
 @app.route('/AddUsuarios',methods=['POST'])
-@login_required
 def guardarUsuarios():
     u = Usuario()
     u.Nombre = request.form['Nombre']
